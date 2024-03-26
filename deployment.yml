@@ -28,3 +28,8 @@ spec:
 # to update just edit the image in the depolyment file
 # kubectl rollout undo deployment //to rollback deployment
 
+# kubectl create -f deployment for creating a deployment
+# kubectl rollout status // to check the status of deployment
+# kubectl rollout history 
+# use --record to record the change in deployment
+
