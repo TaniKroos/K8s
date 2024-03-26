@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-2
+  labels:
+    tier: fornt-end
+    env: prod
+spec:
+  containers:
+    - name: nginx-contaienr2
+      image: nginx
+
