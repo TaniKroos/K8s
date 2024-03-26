@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: # metadata for replication controller
+  name: my-app-D
+  labels:
+    app: my-app
+    type: fornt-end
+spec:
+  template:
+      metadata: # metadata for a pod
+        name: my-app-pod
+        labels:
+          app: my-app
+          type: fornt-end
+      spec:
+        containers:
+          - name: nginx-contaienr
+            image: nginx
+
+  replicas: 3 # specifying number of pods running at all times 
+  selector:
+    matchLabels:
+      type: fornt-end
+      
+# deployment ultimately create replicaset
+# kubectl get all % to get all k8s object @ once
+# rolling update is the default update stratergy
+# to update just edit the image in the depolyment file
+# kubectl rollout undo deployment //to rollback deployment
+

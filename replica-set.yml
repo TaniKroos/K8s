@@ -34,8 +34,13 @@ spec:
 # kubectl get pods
 # replicaset can  filter the pods using labels in the 
 # pod definiton file
+
+
+
 # to scale the pods using replicaset
 # can edit the file and apply the changes using kubectl appply
 # $ kubectl scale --replicas=6 file_name
 # kubectl scale commands won't alter the number of replicas 
 # defined in the rs file
+# kubectl edit replicaset {name of replicaset}
+# kubectl delete replicaset {name of rs}
