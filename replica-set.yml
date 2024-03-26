@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: # metadata for replication controller
+  name: my-app-rs
+  labels:
+    app: my-app
+    type: fornt-end
+spec:
+  template:
+      metadata: # metadata for a pod
+        name: my-app-pod
+        labels:
+          app: my-app
+          type: fornt-end
+      spec:
+        containers:
+          - name: nginx-contaienr
+            image: nginx
+
+  replicas: 3 # specifying number of pods running at all times 
+  selector:
+    matchLabels:
+      type: fornt-end
+    
+
+# selector is the major difference between rc and rs
+# rc can be only used to manage pods which are created in the 
+# rc definition file
+
+# rs can manage pods even which are outside definition file 
+
+# kubectl create -f replication-set.yml
+# kubectl get replicaset
+# kubectl get pods
+# replicaset can  filter the pods using labels in the 
+# pod definiton file
+# to scale the pods using replicaset
+# can edit the file and apply the changes using kubectl appply
+# $ kubectl scale --replicas=6 file_name
+# kubectl scale commands won't alter the number of replicas 
+# defined in the rs file
