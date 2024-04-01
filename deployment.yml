@@ -33,3 +33,11 @@ spec:
 # kubectl rollout history 
 # use --record to record the change in deployment
 
+# kubectl edit changes are not recorded 
+# to record the changes use 
+# kubectl replace -f filename
+# completely recreating the object use
+# kubectl --force -f filename
+
+
+# kubectl apply is a declarative command
