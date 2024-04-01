@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+
+# kubectl create -f namepsace.yml
+# $ kubectl create namespace <name of namespace>
+# kubect config set-context $(kubectl config current-context) --namespace=<nmae> 
+# to switch to different namespace
+# kubectl get pods --all-namespaces
