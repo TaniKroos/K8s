@@ -21,7 +21,6 @@ spec:
   selector:
     matchLabels:
       type: fornt-end
-    
 
 # selector is the major difference between rc and rs
 # rc can be only used to manage pods which are created in the 
