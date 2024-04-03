@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: LimitRange ##namespace level object
+metadata:
+  name: cpu-resource
+spec:
+  limits:
+  - default:
+      cpu: 500m
+    defaultRequest:
+      cpu: 500m
+    max:
+      cpu: "1"
+    min:
+      cpu: 100m
+    type: container
+
+## cpu limit range
+# only applicable to newer pods created after limit range
+
+
+# to restrict all the pods on the node resource Quota 
+# namespace level object neds to be created
+
+
+
+
+
+
+
+# Each container on the pod resource and limit can be specified
+# whn pod exceeds its cpu limit it will be throttled 
+# whn pod exceeds memory limit pod will be terminated with 
+# out of memory messsage
+# Default 
+# no limit is specified 
+# any pod can utilise any amount of memory and suffocate other pods
+# whn no requests specifed nut limit is specified 
+# request is automatically set to limits
+# most ideally set up is requests are specified and no limits are
+# specified
+# whn request no limit is used for memory and second pod require 
+# memory first pod needs to be killed and all memory needs to be freed up

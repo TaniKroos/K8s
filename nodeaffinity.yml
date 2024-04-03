@@ -22,4 +22,5 @@ spec:
                   - Medium
 
 # it uses to place a pod on sspecific node
-#  
+# kubectl label node node01 color=blue
+# // to label existing object imperatively
