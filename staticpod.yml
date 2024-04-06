@@ -17,7 +17,7 @@ status: {}
 
 
 ## path need not be /etc/k8s/manifests
-## first check the path in konfig.yaml
+## first check the path in config.yaml
 ## config.yaml present at /var/lib/kubelet/
 
 
