@@ -9,3 +9,8 @@ spec:
   containers:
     - name: nginx-container
       image: nginx
+
+
+# Entrypoint corresponds to command field
+# CMD corresponds to args 
+# both are provided as arrays 
