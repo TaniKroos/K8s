@@ -9,6 +9,9 @@ spec:
   containers:
     - name: nginx-container
       image: nginx
+      command:
+        - "sleep"
+        - "5000"
 
 
 # Entrypoint corresponds to command field
