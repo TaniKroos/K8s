@@ -15,14 +15,18 @@ spec:
       ports:
         - containerPort: 8080
       envFrom: #ENV 
-        - configMapRef:
-            name: app_config
+        - secretRef:
+            name: app-secret
       env: #single ENV
         - name: App_color
           valueFrom:
             configMapKeyRef:
               key: App_color
               name: app_config
+  volumes:
+    - name: app-secret-volume
+      secret:
+        secretName: app-secret
       
 
 
