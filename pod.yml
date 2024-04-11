@@ -6,6 +6,8 @@ metadata:
     app: nginx
     tier: front-end
 spec:
+  securityContext:
+    runAsUser: 1000
   containers:
     - name: nginx-container
       image: nginx
@@ -23,6 +25,11 @@ spec:
             configMapKeyRef:
               key: App_color
               name: app_config
+      securityContext:
+        runAsUser: 1000
+        capabilities:
+          add: ["MAC_ADMIN"]
+            
   volumes:
     - name: app-secret-volume
       secret:
