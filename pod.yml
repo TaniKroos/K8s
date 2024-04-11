@@ -12,8 +12,24 @@ spec:
       command:
         - "sleep"
         - "5000"
+      ports:
+        - containerPort: 8080
+      envFrom: #ENV 
+        - configMapRef:
+            name: app_config
+      env: #single ENV
+        - name: App_color
+          valueFrom:
+            configMapKeyRef:
+              key: App_color
+              name: app_config
+      
 
 
 # Entrypoint corresponds to command field
 # CMD corresponds to args 
 # both are provided as arrays 
+# there are 3 ways to inject fromconfig maps 
+# env inject specified key value from config map
+# envFrom inject whole config map
+# volumes 

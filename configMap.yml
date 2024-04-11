@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app_config
+data:
+  App_color: blue
+  App_mode: Pod
+
+
+
+# kubectl create configmap <name> --from-literal=<key>=<value>
+# kubectl create configmap <name> --from-file=name_config.properties
+# kubectl create -f configMap.yml
