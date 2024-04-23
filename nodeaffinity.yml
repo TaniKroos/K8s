@@ -24,3 +24,20 @@ spec:
 # it uses to place a pod on sspecific node
 # kubectl label node node01 color=blue
 # // to label existing object imperatively
+
+# to taint an existing node 
+# $ kubectl taint nodes node01 spray=mortein:NoSchedule
+# To untaint a node 
+# $ kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule- 
+# Taint effect define what will happen to the pod if 
+# they do not toelrate the taint
+
+# There are 3 taint effects 
+# NoSchedule - pod will not be scheduled on the nod
+# PreferNoSchedule - system will try to avoid placing pod on the node 
+# but it is not gauranted 
+# NoExecute - New pods will not be scheduled to the node 
+# and all pod will be evicted if they do not tolerate the taint
+
+
+# MASTER NODES ARE TAINTED BY DEFAULT by Scheduler
