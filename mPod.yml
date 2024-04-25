@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yellow
+spec:
+  containers:
+    - name: lemon
+      image: busybox
+      command:
+        - sleep
+        - "1000"
+    - name: gold
+      image: redis
+
+# 3 patterns genereally used in multicontainer pods
+# sidecar Adapter Ambassador
+ 
