@@ -11,7 +11,17 @@ spec:
         - "1000"
     - name: gold
       image: redis
+  initContainers:
+    - name: App
+      image: Tanish
 
 # 3 patterns genereally used in multicontainer pods
 # sidecar Adapter Ambassador
  
+# In multiContainer Pod sometimes
+# One container has to be up and running for other container to run
+# These containers are called Init containers
+# Pod first try to run InitContainer and other container will only be 
+# run after the completion of InitContainer 
+
+
