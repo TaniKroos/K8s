@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp
+spec:
+  containers:
+    - name: simple-webapp
+      image: simple-webapp
+      ports:
+        - containerPort: 8080
+      livenessProbe:
+        httpGet:
+          path: /api/healthy
+          port: 8080
+
+        tcpSocket:
+          port: 3306
+        
+        exec:
+          command:
+            - cat
+            - /api/is_healthy
+
+# Liveness probe is configured similarly to readiness probe
+# Liveness probe test an app within a probe periodically 
+# If a test fails pod is restarted 
