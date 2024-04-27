@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-watch-wear
+spec:
+  rules:
+    - host: wear.aaa.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: wear-service
+                port:
+                  number: 80
+            pathType: Prefix
+    - host: watch.bbb.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: watch-service
+                port:
+                  number: 80
+            pathType: Prefix
+
+# 2Host ingress-resource
+# in version 1.20+ wecan create ingress in imerativve way
+# $ kubectl create ingress  --rule="host/path=service:port"

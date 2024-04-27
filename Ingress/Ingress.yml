@@ -1,0 +1,61 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: Nginx-ingress-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: Nginx-ingress
+  template:
+    metadata:
+      labels:
+        name: Nginx-ingress
+    spec:
+      containers: # Nginx_Controller is deployed as a container 
+        - name: Nginx-ingress-controller
+          image: quay.io/kubernetes-ingress-controller:0.21.0
+          args:
+            - /nginx-ingress-controller
+            - --configmap=$(POD_NAMESPACE)/nginx-configuration
+          env:
+            - name: POD_NAME 
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 80
+              name: http
+            - name: https
+              containerPort: 443
+
+
+      
+    
+    
+
+
+
+
+
+
+
+# A layer7 loadBalancer built in k8s cluster which can 
+# configured using k8s premitives
+
+
+
+# Without Ingress
+# We have to reverse proxy using Nginx 
+# Then configure different services and routes and SSL certificates
+
+# Ingress kinda works in same way
+# A solution is deployed called Ingress Controller 
+# And set of rules configured are called Ingress Resources
+# K8s doesn't have ingress controller by default
+
+# 
