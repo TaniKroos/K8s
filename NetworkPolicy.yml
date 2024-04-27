@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db # label on DB port
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: api-pod # label on api-pod
+      namespaceSelector:
+        matchLabels:
+          name: prod
+      
+    - ipBlock:
+        cidr: 192.168.5.10/32
+    ports:
+      - protocol: TCP
+        port: 3306
+
+    
+  egress: # Egress to write on backup server @ 192.168.5.10 from db-pod
+  - to: 
+    - ipBlock:
+        cidr: 192.168.5.10/32
+    ports:
+      - protocol: TCP
+        port: 80
+# kube-dns service is exposed on prt 53
+
+# Another object in the NameSpace
+# Not all network solution supports network policy on a cluster
+# Eg Flannel doesn't support while Kube-router/calico/weave-net etc does
+
+# Once ingress os allowd on a Pod 
+# Response to that is automatically allowed
