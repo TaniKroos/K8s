@@ -44,6 +44,10 @@ spec:
         claimName: myclaim
   nodeSelector:
     size: Large
+  
+
+  subdomain: mysql-h
+  hostname: mysql-pod
 
 
 # Entrypoint corresponds to command field
