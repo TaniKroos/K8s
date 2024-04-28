@@ -34,12 +34,14 @@ spec:
       operator: "Equal"
       value: "blue"
       effect: "NoSchedule"
-            
+           
   serviceAccountName: dashboard-sa
   volumes:
     - name: app-secret-volume
       secret:
         secretName: app-secret
+      persistentVolumeClaim:
+        claimName: myclaim
   nodeSelector:
     size: Large
 

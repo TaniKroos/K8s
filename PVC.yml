@@ -1,0 +1,15 @@
+apiVersion: v1 
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+  
+
+
+# kubectl delete pvc myclaim
+# persistent vol by default retains until manually deleted by Admin
