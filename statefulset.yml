@@ -19,4 +19,18 @@ spec:
           image: mysql
   replicas: 5
   podManagementPolicy: Parallel
-    
+
+  volumeClaimTemplates:
+  - metadata: 
+      name: data-volume
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: google-storage
+      resources:
+        requests:
+          storageClassName: 500Mi
+
+
+# Statefulset doesn't delete PVC 
+# it ensures the pod is attached to the same pvc as before
