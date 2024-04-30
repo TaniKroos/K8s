@@ -12,3 +12,9 @@
 
 # kubectl cordon node-0x // simply marks the node un schedulable
 # It doesn't drain the nodes of existing pods
+
+
+# $ kubeadm upgrade plan 
+# First upgrade kubeadm itself => $ apt-get upgrade -y kubeadm=<v>
+# $ kubeadm upgrade  apply <v> //update control plane 
+# $ apt-get upgrade kubelet<v> //update kubelet on master
