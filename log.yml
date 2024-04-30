@@ -1,0 +1,6 @@
+
+
+# $ kubectl logs -f Pod_Name
+# Incasse of multiContainer pods 
+# Must satisfy name of the conatainer
+
