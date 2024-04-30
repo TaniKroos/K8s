@@ -1,0 +1,14 @@
+# When a node has to go down for upgrade
+# Pods on that node has to move to other nodes for availability
+# $ kubectl drain node-0x
+# This terminate the pods on the node-0x
+# And create the same pods on other nodes
+# And also mark the node unschedulable
+
+# To make the node schedulable again 
+# $ kubectl uncordon node-0x
+
+
+
+# kubectl cordon node-0x // simply marks the node un schedulable
+# It doesn't drain the nodes of existing pods
