@@ -1,0 +1,31 @@
+
+
+
+# to back up everything in a cluster 
+# config files can be accessed using 
+# $ kubectl get all --all-namespaces -o wide > backup.yml
+
+
+# ETCD store info about state of the cluster
+# instead of backing up all resources we can backup etcd 
+# etcd snapshot can be takn
+# $ etcdctl snapshot save <name.db>
+
+
+# to restore using etcd 
+# stop kubeapi server using 
+# $ service kube-apiserver stop
+# $ etcdctl snapsjot restore <name.db> \
+# > --data-dir /var/lib/etcd-from-backup
+# then configure etcd.config file to use new data dir
+# relaod daemon and restart service
+
+
+# certificate file needs to be certified with all etcd commands
+# endpoints , cacert , cert , key etc
+
+
+
+# To make use of etcdctl for tasks such as back up and restore, make sure that you set the ETCDCTL_API to 3.
+# $ export ETCDCTL_API=3
+
